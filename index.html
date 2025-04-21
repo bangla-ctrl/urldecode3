@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>URL Decoder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    input, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    #output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #e0ffe0;
+      border: 1px solid #c0c0c0;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>URL Decoder</h1>
+  <p>Paste your encoded URL below:</p>
+  <input type="text" id="encodedUrl" placeholder="Enter encoded URL here">
+  <button onclick="decodeUrl()">Decode</button>
+
+  <div id="output"></div>
+
+  <script>
+    function decodeUrl() {
+      const encoded = document.getElementById('encodedUrl').value;
+      try {
+        const decoded = decodeURIComponent(encoded);
+        document.getElementById('output').innerHTML = `
+          <strong>Decoded URL:</strong><br>
+          <a href="${decoded}" target="_blank">${decoded}</a>
+        `;
+      } catch (e) {
+        document.getElementById('output').innerHTML = "Invalid URL encoding!";
+      }
+    }
+  </script>
+</body>
+</html>
